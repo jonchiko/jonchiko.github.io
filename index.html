@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jonchiko • Portfolio</title>
+
+<!-- Fontovi -->
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600&family=Questrial&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --baby-pink: #ffe0ed;
+    --baby-blue: #d8eaff;
+    --mint: #d4f9f1;
+    --lavender: #efe3ff;
+    --text-main: #333;
+  }
+
+  body {
+    margin: 0;
+    font-family: "Questrial", sans-serif;
+    background: linear-gradient(135deg, var(--baby-pink), var(--baby-blue));
+    overflow-x: hidden;
+    color: var(--text-main);
+    height: 100vh;
+    position: relative;
+  }
+
+  /* --- Floating math symbols --- */
+  .math-symbol {
+    position: fixed;
+    font-size: 2.5rem;
+    font-weight: 700;
+    opacity: 0.9;
+    pointer-events: none;
+    animation: floatUp linear infinite;
+    z-index: 0;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(110vh) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-20vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  header {
+    text-align: center;
+    padding: 60px 20px 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  header h1 {
+    font-size: 1.6em;
+    font-family: "Exo 2", sans-serif;
+    background: linear-gradient(90deg, #ff7da6, #b6a5f5, #7bdcb5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  header h1 a {
+    text-decoration: none;
+  }
+
+  nav {
+    text-align: center;
+    margin: 25px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  nav a {
+    text-decoration: none;
+    margin: 0 14px;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  nav a:nth-child(1) { color: #ff7da6; }
+  nav a:nth-child(2) { color: #7fa1f7; }
+  nav a:nth-child(3) { color: #7bdcb5; }
+  nav a:nth-child(4) { color: #f6c177; }
+  nav a:nth-child(5) { color: #b388eb; }
+
+  nav a:hover {
+    filter: brightness(1.3);
+    text-shadow: 0 0 6px rgba(255,255,255,0.8);
+  }
+
+  section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  #about {
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    padding: 30px;
+  }
+
+  #projects {
+    margin-top: 50px;
+  }
+
+  .project-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px 0;
+    scroll-snap-type: x mandatory;
+  }
+
+  .project-card {
+    flex: 0 0 auto;
+    width: 250px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    scroll-snap-align: start;
+    transition: transform 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .project-card h3 {
+    color: #ff7da6;
+    font-size: 1.1em;
+  }
+
+  .project-card a {
+    text-decoration: none;
+    color: #7fa1f7;
+    font-weight: 600;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #777;
+    font-size: 0.9em;
+    z-index: 1;
+    position: relative;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1><a href="https://github.com/jonchiko" target="_blank">Jana Popadić</a></h1>
+    <p> :3 </p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="https://www.canva.com/design/DAGyYmL6k2o/Q1EHr9ZwwkVHojRzr3koZA/view?utm_content=DAGyYmL6k2o&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0942d4e588" target="_blank">CV</a>
+    <a href="https://www.linkedin.com/in/jana-popadic-821517300/" target="_blank">LinkedIn</a>
+    <a href="https://github.com/jonchiko" target="_blank">GitHub</a>
+  </nav>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Data science student with a keen interest in Data Analytics, Data Science, Microcontrollers, Marketing, and other similar topics.  
+      This little site serves as my digital notebook: featuring portfolio, links, projects, and more soon.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>My GitHub Projects</h2>
+    <div class="project-container" id="project-list">
+      <p>Loading repositories...</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Jana Popadić • Inspired @jonchiko.
+  </footer>
+
+  <script>
+    // --- Floating math symbols ---
+    const symbols = ['π', 'Σ', '√', '∞', '∫', 'Δ', 'λ', 'θ', 'φ', '∑', '≅', '∂', '≈', '⊂', 'x²', 'ƒ(x)', '→'];
+    const colors = ['#ff7da6', '#b388eb', '#7fa1f7', '#7bdcb5', '#f6c177'];
+
+    for (let i = 0; i < 45; i++) {
+      const el = document.createElement('div');
+      el.classList.add('math-symbol');
+      el.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+      el.style.color = colors[Math.floor(Math.random() * colors.length)];
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.top = Math.random() * 100 + 'vh';
+      el.style.animationDuration = 12 + Math.random() * 15 + 's';
+      el.style.fontSize = 25 + Math.random() * 40 + 'px';
+      el.style.animationDelay = Math.random() * 10 + 's';
+      el.style.transform = `rotate(${Math.random() * 360}deg)`;
+      document.body.appendChild(el);
+    }
+
+    // --- GitHub Projects ---
+    async function loadProjects() {
+      const container = document.getElementById('project-list');
+      container.innerHTML = '';
+
+      try {
+        const response = await fetch('https://api.github.com/users/jonchiko/repos');
+        const repos = await response.json();
+        repos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+
+        repos.forEach(repo => {
+          const card = document.createElement('div');
+          card.className = 'project-card';
+          card.innerHTML = `
+            <h3>${repo.name}</h3>
+            <p>${repo.description ? repo.description : 'No description provided.'}</p>
+            <a href="${repo.html_url}" target="_blank">View →</a>
+          `;
+          container.appendChild(card);
+        });
+      } catch (error) {
+        container.innerHTML = '<p>Failed to load repositories 😢</p>';
+        console.error(error);
+      }
+    }
+    loadProjects();
+  </script>
+</body>
+</html>
